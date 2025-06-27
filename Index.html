@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Customer Experience Survey</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="reset"] {
+            background-color: #6c757d;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body
+    style="position: relative; display: flex; flex-direction: column; align-items: center; background-color: #800020; overflow-x: hidden;">
+    <img src="https://companieslogo.com/img/orig/JBFCF-f8098eac.png?t=1720244492" alt=""
+        style="position: absolute; z-index: 1; rotate: 50deg; opacity: 20%; left: 0; width: 40vw; height: auto;">
+    <img src="https://pabilimanila.com/cdn/shop/files/UPDATED-BUCKET-DARKER-CRISPY-JUICY-min-915x1024-7b8fe1f9-1c5e-4b20-bacb-04ce6992b14b-_1.png?v=1698749236" alt=""
+        style="position: absolute; z-index: 1; rotate: -50deg; opacity: 20%; right: 0; bottom: 0; width: 40vw; height: auto; ">
+
+    <h2 style="z-index: 2;">Customer Experience Survey</h2>
+    <img src="https://download.logo.wine/logo/Jollibee/Jollibee-Logo.wine.png" alt="picture_jollibee" ; width="300"
+        height="auto" style="z-index: 2;">
+
+    <form style="z-index: 2;" id="Jolly">
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="10" max="100">
+        </fieldset>
+
+        <fieldset>
+            <legend>Service Rating</legend>
+
+            <label>How satisfied are you with our service?</label>
+            <label><input type="radio" name="rating" value="very_satisfied"> Very Satisfied</label>
+            <label><input type="radio" name="rating" value="satisfied"> Satisfied</label>
+            <label><input type="radio" name="rating" value="neutral"> Neutral</label>
+            <label><input type="radio" name="rating" value="dissatisfied"> Dissatisfied</label>
+
+            <label>What features do you use? (Check all that apply):</label>
+            <label><input type="checkbox" name="feature" value="chat"> Live Chat</label>
+            <label><input type="checkbox" name="feature" value="support"> Email Support</label>
+            <label><input type="checkbox" name="feature" value="faq"> FAQs</label>
+
+            <label for="contact_method">Preferred Contact Method:</label>
+            <select id="contact_method" name="contact_method">
+                <option value="">--Please choose--</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="chat">Live Chat</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional Feedback</legend>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Tell us how we can improve..."></textarea>
+        </fieldset>
+
+        <div class="form-actions">
+            <input type="reset" value="Reset Form">
+            <input type="submit" value="Submit Survey">
+        </div>
+    </form>
+
+
+    
+<script>
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbywt5QW9hniQEKNdMRwk-2a_fjSBE0tgd8Tx_snndX-37cjKqFsZpSZi8IQWVGUTvlfBQ/exec';
+
+  const form = document.getElementById('Jolly');
+
+ 
+
+//When the user clicks the submit button, this function runs.
+
+  form.addEventListener('submit', e => {
+
+    e.preventDefault(); //This stops the browser’s default action of reloading
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+
+      .then(response => {
+
+        alert("Form submitted successfully!");
+
+        form.reset();
+
+      })
+
+      .catch(error => alert('Error!', error.message));
+
+  });
+
+</script>
+
+</body>
+
+</html>
